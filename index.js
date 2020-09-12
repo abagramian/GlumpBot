@@ -12,6 +12,8 @@ for (const file of commandFiles) {
 
 const schedule = require('node-schedule');
 
+const config = require('./config.json');
+
 bot.once('ready', () => {
   console.log(`Logged in as Glump!`);
 });
@@ -40,4 +42,4 @@ bot.on('message', msg => {
   }
 });
 
-bot.login('NzU0MTE5MDI1MDM3OTM0NjIy.X1wGEg.D-wRz2pnTsYxBJFHAq6lmeYIrMg');
+bot.login(config.token);
