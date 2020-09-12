@@ -25,7 +25,6 @@ const tues = schedule.scheduleJob('20 14 * * 3', function(){
 });
 
 
-const prefix = "!";
 bot.on('message', msg => {
 
   if (msg.author.bot) return;
@@ -39,6 +38,8 @@ bot.on('message', msg => {
     bot.commands.get('glumpPhrase').execute(msg);
   } else if (msg.content.startsWith("!commands")) {
     bot.commands.get('glumpList').execute(msg);
+  } else if (msg.content.startsWith("!tuck")) {
+    bot.commands.get('sendTuck').execute(msg);
   }
 });
 
