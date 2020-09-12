@@ -24,6 +24,7 @@ const tues = schedule.scheduleJob('20 14 * * 3', function(){
   bot.channels.get('754209706209312798').send("Jake wants @everyone to know that it is Toe Suckin' Tuesday!");
 });
 
+const prefix = "!";
 
 bot.on('message', msg => {
 
