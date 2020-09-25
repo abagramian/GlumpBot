@@ -4,8 +4,10 @@ module.exports = {
     execute(message) {
         const list = 
         `I can understand the following commands:
-         \t **!commands** - for when you forget what I can do!
-         \t **!glump** - I'll remind you of my catchphrases!`;
+         \`!help\`
+         \`!glump\`
+         \`!meem\`
+         \`!owo\` (works best following another message with lots of owo potential)`;
         message.channel.send(list);
     }
 }
