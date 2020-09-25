@@ -11,6 +11,7 @@ for (const file of commandFiles) {
 }
 
 const schedule = require('node-schedule');
+const { brotliCompress } = require('zlib');
 
 const config = require('./config.json');
 
@@ -19,29 +20,40 @@ bot.once('ready', () => {
 });
 
 
-const tues = schedule.scheduleJob('20 14 * * 3', function(){
+const tues = schedule.scheduleJob('20 14 * * 7', function(){
   //id is temp id for testing server
-  bot.channels.get('754209706209312798').send("Jake wants @everyone to know that it is Toe Suckin' Tuesday!");
+  bot.channels.get('754209706209312798').send("Jake wants @everyone to know that you should sign up for some service events!");
 });
 
 const prefix = "!";
 
 bot.on('message', msg => {
 
+  const messageContent = msg.content;
+
   if (msg.author.bot) return;
 
   if (msg.content.includes("game")) {
     bot.commands.get('loser').execute(msg);
 
-  if (!msg.content.startsWith(prefix)) 
+  if (!messageContent.startsWith(prefix)) 
     return;
-  } else if (msg.content.startsWith("!glump")) {
+  } else if (messageContent.startsWith("!glump")) {
     bot.commands.get('glumpPhrase').execute(msg);
-  } else if (msg.content.startsWith("!commands")) {
+  } else if (messageContent.startsWith("!help")) {
     bot.commands.get('glumpList').execute(msg);
-  } else if (msg.content.startsWith("!tuck")) {
-    bot.commands.get('sendTuck').execute(msg);
+  } else if (messageContent.startsWith("!meem")) {
+    bot.commands.get('sendMemes').execute(msg);
+  } /* else if (messageContent.startsWith("!fellowship")) {
+    bot.commands.get('fellowEvents').execute();
+  } */ else if (messageContent.startsWith("!owo")) {
+    bot.commands.get('owoifier').execute(msg);
+  } else {
+    if (messageContent.startsWith(prefix)) {
+      msg.channel.send("Sorry, I never finished reading school so I'm not sure what that means! For a list of my capabilities, type \`!help\`");
+    }
   }
+
 });
 
 bot.login(process.env.token);
