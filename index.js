@@ -33,10 +33,10 @@ bot.on('message', msg => {
 
   if (msg.author.bot) return;
 
-  if (msg.content.includes("game")) {
-    bot.commands.get('loser').execute(msg);
-
-  if (!messageContent.startsWith(prefix)) 
+  if (messageContent.toLowerCase().includes("game")) {
+    //bot.commands.get('loser').execute(msg);
+  }
+  if (!messageContent.startsWith(prefix)) {
     return;
   } else if (messageContent.startsWith("!glump")) {
     bot.commands.get('glumpPhrase').execute(msg);
@@ -44,10 +44,12 @@ bot.on('message', msg => {
     bot.commands.get('glumpList').execute(msg);
   } else if (messageContent.startsWith("!meem")) {
     bot.commands.get('sendMemes').execute(msg);
-  } /* else if (messageContent.startsWith("!fellowship")) {
+  } else if (messageContent.startsWith("!fellowship")) {
     bot.commands.get('fellowEvents').execute();
-  } */ else if (messageContent.startsWith("!owo")) {
+  } else if (messageContent.startsWith("!owo")) {
     bot.commands.get('owoifier').execute(msg);
+  } else if (messageContent.startsWith("!donate")){
+    bot.commands.get('saveMeem').execute(msg);
   } else {
     if (messageContent.startsWith(prefix)) {
       msg.channel.send("Sorry, I never finished reading school so I'm not sure what that means! For a list of my capabilities, type \`!help\`");
@@ -56,4 +58,5 @@ bot.on('message', msg => {
 
 });
 
-bot.login(process.env.token);
+// bot.login(process.env.token);
+bot.login("NzU0MTE5MDI1MDM3OTM0NjIy.X1wGEg.y-I9gv7PBTmd76Qx2MD-4ljZPEY");
